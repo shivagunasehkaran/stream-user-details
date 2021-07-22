@@ -5,21 +5,31 @@
  * @format
  * @flow strict-local
  */
-import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import type {Node} from 'react';
+import React, {useEffect, useState} from 'react';
+import {SafeAreaView, View} from 'react-native';
+import {useFetchRandomUserAPI} from '../../services/Services';
 import {styles} from './Home.style';
 
-type Props = {
-  str: string,
-};
+const Home = (): Node => {
+  const [userData, setUserData] = useState([]);
 
-const Home = (props: Props) => {
+  // Remember the latest callback.
+  useEffect(() => {
+    callRandomAPI();
+  }, []);
+
+  // call random user API
+  async function callRandomAPI() {
+    let data = await useFetchRandomUserAPI(5);
+    // set user data
+    setUserData(data);
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <View>
-          <Text>{'Hi Shiva'}</Text>
-        </View>
+        <Text>{'Hi Shiva'}</Text>
       </SafeAreaView>
     </View>
   );

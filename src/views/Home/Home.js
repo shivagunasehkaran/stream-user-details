@@ -27,18 +27,22 @@ const Home = (): Node => {
     setUserData(data);
   }
 
+  // child render item
+  const childListRenderItem = ({item, index}) => (
+    <UserDetails item={item} renderOverlay={() => renderOverlay(index)} />
+  );
+
+  // child KeyExtractor
+  const childListKeyExtractor = item => item.id;
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.flatListView}>
           <FlatList
             data={userData}
-            renderItem={({item, index}) => (
-              <UserDetails
-                item={item}
-              />
-            )}
-            keyExtractor={item => item.id}
+            renderItem={childListRenderItem}
+            keyExtractor={childListKeyExtractor}
           />
         </View>
       </SafeAreaView>

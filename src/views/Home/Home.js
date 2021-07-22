@@ -8,6 +8,7 @@
 import type {Node} from 'react';
 import React, {useEffect, useState} from 'react';
 import {FlatList, SafeAreaView, View} from 'react-native';
+import UserDetails from '../../components/UserDetails/UserDetails';
 import {useFetchRandomUserAPI} from '../../services/Services';
 import {styles} from './Home.style';
 
@@ -30,7 +31,15 @@ const Home = (): Node => {
     <View style={styles.container}>
       <SafeAreaView>
         <View style={styles.flatListView}>
-          <FlatList data={userData} keyExtractor={item => item.id} />
+          <FlatList
+            data={userData}
+            renderItem={({item, index}) => (
+              <UserDetails
+                item={item}
+              />
+            )}
+            keyExtractor={item => item.id}
+          />
         </View>
       </SafeAreaView>
     </View>

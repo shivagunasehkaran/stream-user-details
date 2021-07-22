@@ -10,4 +10,8 @@ export const styles = StyleSheet.create({
     backgroundColor: ColourPalette.white,
     marginVertical: 10,
   },
+  loader: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
 });

@@ -7,7 +7,7 @@
  */
 import type {Node} from 'react';
 import React, {useEffect, useState} from 'react';
-import {FlatList, SafeAreaView, View} from 'react-native';
+import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
 import OverLay from '../../components/OverLay/OverLay';
 import UserDetails from '../../components/UserDetails/UserDetails';
 import {useFetchRandomUserAPI} from '../../services/Services';
@@ -15,28 +15,32 @@ import {styles} from './Home.style';
 
 const Home = (): Node => {
   const [userData, setUserData] = useState([]);
-  const [isVisible, setVisible] = useState(false);
+  const [isVisible, setisVisible] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+  const [pageCurrent, setpageCurrent] = useState(10);
 
   // Remember the latest callback.
   useEffect(() => {
+    setisLoading(true);
     callRandomAPI();
-  }, []);
+  }, [pageCurrent]);
 
   // call random user API
   async function callRandomAPI() {
-    let data = await useFetchRandomUserAPI(5);
+    let data = await useFetchRandomUserAPI(pageCurrent);
     // set user data
-    setUserData(data);
+    setUserData(userData.concat(data));
+    setisLoading(false);
   }
 
   // show overlay
   const renderOverlay = index => {
-    setVisible(true);
+    setisVisible(true);
   };
 
   // hide overlay
   const hideOverlay = () => {
-    setVisible(false);
+    setisVisible(false);
   };
 
   // child render item
@@ -47,6 +51,21 @@ const Home = (): Node => {
   // child KeyExtractor
   const childListKeyExtractor = item => item.id;
 
+  // child render footer
+  const childRenderFooter = () => {
+    return isLoading ? (
+      <View style={styles.loader}>
+        <ActivityIndicator size={'large'} />
+      </View>
+    ) : null;
+  };
+
+  // handle pagination
+  const handleLoadMore = () => {
+    setpageCurrent(pageCurrent + 10);
+    setisLoading(true);
+  };
+
   return (
     <View style={styles.container}>
       {isVisible ? <OverLay onHandle={() => hideOverlay()} /> : null}
@@ -56,6 +75,9 @@ const Home = (): Node => {
             data={userData}
             renderItem={childListRenderItem}
             keyExtractor={childListKeyExtractor}
+            ListFooterComponent={childRenderFooter}
+            onEndReached={handleLoadMore}
+            onEndReachedThreshold={0}
           />
         </View>
       </SafeAreaView>

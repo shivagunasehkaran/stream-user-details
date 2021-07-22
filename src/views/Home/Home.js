@@ -7,7 +7,7 @@
  */
 import type {Node} from 'react';
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {FlatList, SafeAreaView, View} from 'react-native';
 import {useFetchRandomUserAPI} from '../../services/Services';
 import {styles} from './Home.style';
 
@@ -29,7 +29,9 @@ const Home = (): Node => {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <Text>{'Hi Shiva'}</Text>
+        <View style={styles.flatListView}>
+          <FlatList data={userData} keyExtractor={item => item.id} />
+        </View>
       </SafeAreaView>
     </View>
   );

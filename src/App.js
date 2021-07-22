@@ -6,9 +6,10 @@
  * @flow strict-local
  */
 import React from 'react';
+import type {Node} from 'react';
 import Home from '../src/views/Home';
 
-const App = () => {
+const App = (): Node => {
   return <Home />;
 };
 

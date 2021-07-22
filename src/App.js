@@ -6,16 +6,10 @@
  * @flow strict-local
  */
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import Home from '../src/views/Home';
 
-const App = (props: Props) => {
-  return (
-    <View style={{flex: 1}}>
-      <SafeAreaView>
-        <Text>{'Hi Shiva'}</Text>
-      </SafeAreaView>
-    </View>
-  );
+const App = () => {
+  return <Home />;
 };
 
 export default App;

@@ -7,8 +7,13 @@ import React from 'react';
 import App from '../App';
 
 // Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+enzyme.configure({adapter: new Adapter()});
+
+it('renders correctly', async () => {
+  let snapshot;
+  snapshot = shallow(<App />);
+  expect(snapshot).toMatchSnapshot();
 });

@@ -16,10 +16,10 @@ export const styles = StyleSheet.create({
   overlay: {
     marginLeft: 50,
     backgroundColor: ColourPalette.lightGrey,
-    width: 200,
+    width: 300,
     height: 200,
     borderRadius: 10,
-    borderWidth: 0.1,
+    borderWidth: 0.2,
     borderColor: ColourPalette.black,
   },
   overlayTopItem: {
@@ -29,14 +29,14 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: 0.2,
+    borderBottomWidth: 0.5,
   },
   overlayMiddleItem: {
     flex: 2,
     backgroundColor: ColourPalette.darkGrey,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: 0.2,
+    borderBottomWidth: 0.5,
   },
   overlayBottomItem: {
     flex: 2,

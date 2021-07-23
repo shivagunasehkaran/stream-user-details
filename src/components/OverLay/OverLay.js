@@ -3,12 +3,31 @@ import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 
 import {styles} from './OverLay.style';
 import * as Images from '../../assets/styles/Images';
+import {formatDateToDisplayDate} from '../../utills/utills';
 
 type OverlayProp = {
-  users: string,
+  email: string,
+  city: string,
+  dateOfBirth: string,
+  gender: string,
 };
 
 const OverLay = (props: OverlayProp) => {
+  const {email, gender} = props.individualUserItem
+    ? props.individualUserItem
+    : null;
+  const city =
+    props.individualUserItem &&
+    props.individualUserItem.location &&
+    props.individualUserItem.location.city
+      ? props.individualUserItem.location.city
+      : null;
+  const dateOfBirth =
+    props.individualUserItem &&
+    props.individualUserItem.dob &&
+    props.individualUserItem.location.date
+      ? props.individualUserItem.location.date
+      : null;
   return (
     <ImageBackground
       style={styles.container}
@@ -17,16 +36,16 @@ const OverLay = (props: OverlayProp) => {
       <TouchableOpacity onPress={() => props.onHandle()}>
         <View style={styles.overlay}>
           <View style={styles.overlayTopItem}>
-            <Text>{'Email'}</Text>
+            <Text>{email}</Text>
           </View>
           <View style={styles.overlayMiddleItem}>
-            <Text>{'City'}</Text>
+            <Text>{city}</Text>
           </View>
           <View style={styles.overlayMiddleItem}>
-            <Text>{'Date of Birth'}</Text>
+            <Text>{formatDateToDisplayDate(dateOfBirth)}</Text>
           </View>
           <View style={styles.overlayBottomItem}>
-            <Text>{'Gender'}</Text>
+            <Text>{gender}</Text>
           </View>
         </View>
       </TouchableOpacity>

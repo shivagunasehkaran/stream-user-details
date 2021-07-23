@@ -27,10 +27,16 @@ const Home = (): Node => {
   // call random user API
   async function getUserProfiles() {
     let data = await useFetchUserAPI(pageCurrent);
-    // set user data
-    setUserData(userData.concat(data));
+    getLast20Item(data);
     setIsLoading(false);
   }
+
+  // get last 20 items from array & set data into new list
+  const getLast20Item = data => {
+    let newItem = data.slice(data.length - 20);
+    // set user data
+    setUserData(userData.concat(newItem));
+  };
 
   // show overlay
   const showPopup = item => {

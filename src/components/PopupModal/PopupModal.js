@@ -1,3 +1,4 @@
+// react library imports
 import React, {useContext} from 'react';
 import {
   ImageBackground,
@@ -5,11 +6,11 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-
+// style & image imports
 import {PopupStyles} from './PopupModal.style';
 import {ThemeContext} from '../../provider/ThemeProvider';
-
 import * as Images from '../../assets/styles/Images';
+// utills imports
 import {formatDateToDisplayDate} from '../../utills/utills';
 
 type PopupModalProp = {
@@ -20,9 +21,10 @@ type PopupModalProp = {
 };
 
 const PopupModal = (props: PopupModalProp) => {
+  // getting colors from ThemeContext
   const {colourPalette} = useContext(ThemeContext);
   const styles = PopupStyles(colourPalette);
-
+  // getting data from parent
   const {email, gender} = props.individualUserItem
     ? props.individualUserItem
     : null;

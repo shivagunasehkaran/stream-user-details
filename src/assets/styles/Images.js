@@ -1,4 +1,4 @@
 export const Images = {
-  //blur
+  // blur background image
   blurBG: require('../img/blur.png'),
 };

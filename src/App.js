@@ -1,14 +1,13 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
  * @format
  * @flow strict-local
  */
+// react library imports
 import React from 'react';
 import type {Node} from 'react';
-
+// presentational component
 import Home from '../src/views/Home';
+// style imports
 import ThemeProvider from '../src/provider/ThemeProvider';
 
 const App = (): Node => {

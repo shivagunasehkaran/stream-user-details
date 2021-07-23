@@ -1,6 +1,7 @@
+// react library imports
 import React, {createContext, useEffect, useState} from 'react';
 import {Appearance} from 'react-native';
-
+// style imports
 import {ColourPalette} from '../assets/styles/ColourPalette';
 
 export const ThemeContext = createContext();

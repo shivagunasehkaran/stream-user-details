@@ -1,4 +1,5 @@
 export const ColourPalette = {
+  // light theme colors
   light: {
     primary: '#ffffff',
     secondary: '#ECECEC',
@@ -6,6 +7,7 @@ export const ColourPalette = {
     lightGrey: '#ECECEC',
     darkGrey: '#D3D3D3',
   },
+  // dark theme colors
   dark: {
     primary: '#333333',
     secondary: '#A29E9D',

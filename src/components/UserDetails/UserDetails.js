@@ -1,6 +1,7 @@
+// react library imports
 import React, {useContext} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-
+// style imports
 import {UserDetailsStyles} from './UserDetails.style';
 import {ThemeContext} from '../../provider/ThemeProvider';
 
@@ -11,9 +12,10 @@ type UserDetailsProp = {
 
 // flatlist render item
 const UserDetails = (props: UserDetailsProp) => {
+  // getting colors from ThemeContext
   const {colourPalette} = useContext(ThemeContext);
   const styles = UserDetailsStyles(colourPalette);
-
+  // getting data from parent
   let item = props.item ? props.item : null;
   let iconUrl =
     item && item.picture && item.picture.thumbnail
@@ -23,7 +25,6 @@ const UserDetails = (props: UserDetailsProp) => {
   let firstName = item && item.name ? item.name.first : '';
   let lastName = item && item.name ? item.name.last : '';
   let phone = item ? item.phone : '';
-
   return (
     <TouchableOpacity
       style={styles.container}

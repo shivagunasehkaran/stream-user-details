@@ -2,14 +2,17 @@
  * @format
  * @flow strict-local
  */
+
+// react library imports
 import React, {useEffect, useState, useContext} from 'react';
 import type {Node} from 'react';
 import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
-
+// component imports
 import PopupModal from '../../components/PopupModal/PopupModal';
 import UserDetails from '../../components/UserDetails/UserDetails';
+// API imports
 import {useFetchUserAPI} from '../../services/Services';
-
+// style imports
 import {HomeStyles} from './Home.style';
 import {ThemeContext} from '../../provider/ThemeProvider';
 import {ColourPalette} from '../../assets/styles/ColourPalette';
@@ -20,16 +23,17 @@ const Home = (): Node => {
   const [isLoading, setIsLoading] = useState(false);
   const [pageCurrent, setPageCurrent] = useState(20);
   const [individualUserItem, setIndividualUserItem] = useState([]);
+  // getting colors from ThemeContext
   const {colourPalette} = useContext(ThemeContext);
   const styles = HomeStyles(colourPalette);
 
-  // Remember the latest callback.
+  // call API whenever API pageCurrent changes
   useEffect(() => {
     setIsLoading(true);
     getUserProfiles();
   }, [pageCurrent]);
 
-  // call random user API
+  // get user details API
   async function getUserProfiles() {
     let data = await useFetchUserAPI(pageCurrent);
     getLast20Item(data);
@@ -39,7 +43,7 @@ const Home = (): Node => {
   // get last 20 items from array & set data into new list
   const getLast20Item = data => {
     let newItem = data.slice(data.length - 20);
-    // set user data
+    // concat old and new data and set user data
     setUserData(userData.concat(newItem));
   };
 
@@ -68,6 +72,7 @@ const Home = (): Node => {
 
   // handle pagination
   const handleLoadMore = () => {
+    // appending 20 with old data
     setPageCurrent(pageCurrent + 20);
     setIsLoading(true);
   };

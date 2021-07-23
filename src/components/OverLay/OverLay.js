@@ -1,7 +1,8 @@
 import React from 'react';
 import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
-import BGImage from '../../assets/img/blur.png';
+
 import {styles} from './OverLay.style';
+import * as Images from '../../assets/styles/Images';
 
 type OverlayProp = {
   users: string,
@@ -9,7 +10,10 @@ type OverlayProp = {
 
 const OverLay = (props: OverlayProp) => {
   return (
-    <ImageBackground style={styles.container} source={BGImage} blurRadius={25}>
+    <ImageBackground
+      style={styles.container}
+      source={Images.Images.blurBG}
+      blurRadius={25}>
       <TouchableOpacity onPress={() => props.onHandle()}>
         <View style={styles.overlay}>
           <View style={styles.overlayTopItem}>

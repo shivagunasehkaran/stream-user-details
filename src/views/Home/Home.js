@@ -2,7 +2,8 @@
  * @format
  * @flow strict-local
  */
-import React, {Node, useEffect, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import type {Node} from 'react';
 import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
 
 import OverLay from '../../components/OverLay/OverLay';

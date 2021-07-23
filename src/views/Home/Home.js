@@ -6,7 +6,7 @@ import React, {useEffect, useState, useContext} from 'react';
 import type {Node} from 'react';
 import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
 
-import OverLay from '../../components/OverLay/OverLay';
+import PopupModal from '../../components/PopupModal/PopupModal';
 import UserDetails from '../../components/UserDetails/UserDetails';
 import {useFetchUserAPI} from '../../services/Services';
 
@@ -43,7 +43,7 @@ const Home = (): Node => {
     setUserData(userData.concat(newItem));
   };
 
-  // show overlay
+  // show PopupModal
   const showPopup = item => {
     setIsVisible(true);
     setIndividualUserItem(item);
@@ -86,7 +86,7 @@ const Home = (): Node => {
           />
         </View>
         {isVisible ? (
-          <OverLay
+          <PopupModal
             individualUserItem={individualUserItem}
             onHandle={() => setIsVisible(false)}
           />

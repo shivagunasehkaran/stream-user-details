@@ -1,4 +1,5 @@
 export function formatDateToDisplayDate(timeString) {
+  console.log('timeString -->',timeString);
   let d = new Date(timeString),
     month = '' + (d.getMonth() + 1),
     day = '' + d.getDate(),

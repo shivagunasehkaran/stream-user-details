@@ -14,7 +14,7 @@ export const PopupStyles = (colourPalette: any) =>
       zIndex: 1,
       justifyContent: 'center',
     },
-    overlay: {
+    popupModal: {
       marginLeft: 50,
       backgroundColor: colourPalette.lightGrey,
       width: 300,
@@ -23,7 +23,7 @@ export const PopupStyles = (colourPalette: any) =>
       borderWidth: 0.2,
       borderColor: colourPalette.black,
     },
-    overlayTopItem: {
+    popupModalTopItem: {
       flex: 2,
       backgroundColor: colourPalette.darkGrey,
       borderTopLeftRadius: 10,
@@ -32,14 +32,14 @@ export const PopupStyles = (colourPalette: any) =>
       alignItems: 'center',
       borderBottomWidth: 0.5,
     },
-    overlayMiddleItem: {
+    popupModalMiddleItem: {
       flex: 2,
       backgroundColor: colourPalette.darkGrey,
       justifyContent: 'center',
       alignItems: 'center',
       borderBottomWidth: 0.5,
     },
-    overlayBottomItem: {
+    popupModalBottomItem: {
       flex: 2,
       backgroundColor: colourPalette.darkGrey,
       borderBottomStartRadius: 10,

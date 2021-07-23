@@ -2,18 +2,18 @@ import React from 'react';
 import enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import OverLay from '../../src/components/OverLay/OverLay';
+import PopupModal from '../../src/components/PopupModal/PopupModal';
 
 enzyme.configure({adapter: new Adapter()});
 
-describe('Overlay component validation', () => {
-  it('renders correctly with Overlay detail elments', async () => {
-    const wrapper = shallow(<OverLay />);
+describe('PopupModal component validation', () => {
+  it('renders correctly with PopupModal detail elments', async () => {
+    const wrapper = shallow(<PopupModal />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render with text elements', async () => {
-    const wrapper = shallow(<OverLay />);
+    const wrapper = shallow(<PopupModal />);
     expect(wrapper.find('Text')).toHaveLength(4);
   });
 });

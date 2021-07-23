@@ -6,20 +6,20 @@ import {
   View,
 } from 'react-native';
 
-import {PopupStyles} from './OverLay.style';
+import {PopupStyles} from './PopupModal.style';
 import {ThemeContext} from '../../provider/ThemeProvider';
 
 import * as Images from '../../assets/styles/Images';
 import {formatDateToDisplayDate} from '../../utills/utills';
 
-type OverlayProp = {
+type PopupModalProp = {
   email: string,
   city: string,
   dateOfBirth: string,
   gender: string,
 };
 
-const OverLay = (props: OverlayProp) => {
+const PopupModal = (props: PopupModalProp) => {
   const {colourPalette} = useContext(ThemeContext);
   const styles = PopupStyles(colourPalette);
 
@@ -35,8 +35,8 @@ const OverLay = (props: OverlayProp) => {
   const dateOfBirth =
     props.individualUserItem &&
     props.individualUserItem.dob &&
-    props.individualUserItem.location.date
-      ? props.individualUserItem.location.date
+    props.individualUserItem.dob.date
+      ? props.individualUserItem.dob.date
       : null;
   return (
     <TouchableWithoutFeedback onPress={() => props.onHandle()}>
@@ -44,17 +44,17 @@ const OverLay = (props: OverlayProp) => {
         style={styles.container}
         source={Images.Images.blurBG}
         blurRadius={25}>
-        <View style={styles.overlay}>
-          <View style={styles.overlayTopItem}>
+        <View style={styles.popupModal}>
+          <View style={styles.popupModalTopItem}>
             <Text>{email}</Text>
           </View>
-          <View style={styles.overlayMiddleItem}>
+          <View style={styles.popupModalMiddleItem}>
             <Text>{city}</Text>
           </View>
-          <View style={styles.overlayMiddleItem}>
+          <View style={styles.popupModalMiddleItem}>
             <Text>{formatDateToDisplayDate(dateOfBirth)}</Text>
           </View>
-          <View style={styles.overlayBottomItem}>
+          <View style={styles.popupModalBottomItem}>
             <Text>{gender}</Text>
           </View>
         </View>
@@ -63,4 +63,4 @@ const OverLay = (props: OverlayProp) => {
   );
 };
 
-export default OverLay;
+export default PopupModal;

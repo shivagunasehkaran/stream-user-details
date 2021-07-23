@@ -6,7 +6,7 @@ import {ColourPalette} from '../assets/styles/ColourPalette';
 
 export const ThemeContext = createContext();
 
-const ThemeProvider = ({children}) => {
+const ThemeProvider = React.memo(({children}) => {
   const [theme, setTheme] = useState('light');
 
   useEffect(async () => {
@@ -26,5 +26,6 @@ const ThemeProvider = ({children}) => {
       {children}
     </ThemeContext.Provider>
   );
-};
+});
+
 export default ThemeProvider;

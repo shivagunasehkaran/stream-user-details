@@ -1,5 +1,10 @@
 import React from 'react';
-import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ImageBackground,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 import {styles} from './OverLay.style';
 import * as Images from '../../assets/styles/Images';
@@ -29,11 +34,11 @@ const OverLay = (props: OverlayProp) => {
       ? props.individualUserItem.location.date
       : null;
   return (
-    <ImageBackground
-      style={styles.container}
-      source={Images.Images.blurBG}
-      blurRadius={25}>
-      <TouchableOpacity onPress={() => props.onHandle()}>
+    <TouchableWithoutFeedback onPress={() => props.onHandle()}>
+      <ImageBackground
+        style={styles.container}
+        source={Images.Images.blurBG}
+        blurRadius={25}>
         <View style={styles.overlay}>
           <View style={styles.overlayTopItem}>
             <Text>{email}</Text>
@@ -48,8 +53,8 @@ const OverLay = (props: OverlayProp) => {
             <Text>{gender}</Text>
           </View>
         </View>
-      </TouchableOpacity>
-    </ImageBackground>
+      </ImageBackground>
+    </TouchableWithoutFeedback>
   );
 };
 

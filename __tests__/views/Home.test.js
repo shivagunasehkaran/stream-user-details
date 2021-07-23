@@ -1,9 +1,9 @@
 import React from 'react';
 import enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {Alert} from 'react-native';
-import Home from '../../src/views/Home';
+
 import * as ServicesAPI from '../../src/services/Services';
+import Home from '../../src/views/Home';
 
 enzyme.configure({adapter: new Adapter()});
 

@@ -53,7 +53,7 @@ const Home = (): Node => {
   );
 
   // child KeyExtractor
-  const childListKeyExtractor = item => item.id;
+  const childListKeyExtractor = (item, index) => String(index);
 
   // child render footer
   const childRenderFooter = () => {

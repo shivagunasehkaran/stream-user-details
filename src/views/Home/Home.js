@@ -66,7 +66,7 @@ const Home = (): Node => {
 
   // handle pagination
   const handleLoadMore = () => {
-    setpageCurrent(pageCurrent + 10);
+    setpageCurrent(pageCurrent + 20);
     setisLoading(true);
   };
 

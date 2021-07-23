@@ -1,7 +1,7 @@
 # Stream User details : Sample application for Test assignment 
 
 This Stream User details app allows you to see lot of users list with Avatar, Name and Phone. If you long press on the particular list item, 
-then you will be able to see the Popup modal with blurry back ground. In that Popup modal you will be allow to see Email, City, Date of Birth and Gender for the individual user.
+then you will be able to see the Popup modal with blurry background. In that Popup modal you will be able to see Email, City, Date of Birth and Gender for the individual user.
 
 Please go ahead and play around  :)
 
@@ -14,7 +14,7 @@ Please go ahead and play around  :)
   - Also, list should load more results as user scrolls down the list (pagination).
   - Project working on both Android and iOS
   - Project running on latest RN 0.64.2.
-  - Bonus point : Added light and dark mode, depending on system's appearence preference. ( Hope i will get bonus point :D )
+  - Bonus point : Added light and dark mode, depending on system's appearence preference. (Hope i will get bonus point :D)
   - I have created app UI as per some best pratice approach.
   - As per requirement, not used any external library. Everything managed by own.
 
@@ -65,16 +65,16 @@ Please go ahead and play around  :)
 ## Thinking & Decisions :
 
   - Since, No pagination given in API. I have decided to add pagination after every 20 records.
-  - Calling API on every URL change (Appending 20 when list reached page end)
+  - Calling API on every **url** change (Appending 20 when list reached page end)
   - Could use **UseMemo** for child render item but based on API, data's are changing every time you refresh. Understood rerender will happen everytime, so better not to use           **UseMemo** (According to the coding standard, If the component isn’t heavy and usually renders with different props, most likely not to use memoizations, 
     Using the following rule of thumb: don’t use memoization if you can’t quantify the performance gains.)
   - No error alerts added, because handled all the NULL check in all components and handled Promise reject for API failure.
   - Provided Loader (Activity indicator) before API calling and every load more items, Loader will shown in bottom of the screen, just for user interaction.
-  - ColourPalette created for maintain colors
+  - Created ColourPalette for maintaining colors
   - Have not included any external library for Modal Popup (overlay with blurry background), created custom component for populating user values but used small trick to display 
     blurry background (added static list image), we can follow better approach in future.
   - Created Utility function for convert ISO date to normal date. (Date of Birth)
-  - Crated Constant file for maintain API url's
+  - Created Constant file for maintaining API url's
   
 ## outputs :
           

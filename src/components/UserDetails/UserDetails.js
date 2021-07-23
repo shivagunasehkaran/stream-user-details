@@ -23,7 +23,7 @@ const UserDetails = (props: UserDetailsProp) => {
   return (
     <TouchableOpacity
       style={styles.container}
-      onLongPress={() => props.renderOverlay(item)}>
+      onLongPress={() => props.showPopup(item)}>
       <View style={styles.avatarView}>
         <Image source={{uri: iconUrl}} style={styles.avatar} />
       </View>

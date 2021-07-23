@@ -1,6 +1,6 @@
 import {GET_URL} from './Constants';
 
-export async function useFetchRandomUserAPI(count) {
+export async function useFetchUserAPI(count) {
   const url = GET_URL.RANDOM_USER_URL + `${count}`;
   return fetch(url)
     .then(response => response.json())

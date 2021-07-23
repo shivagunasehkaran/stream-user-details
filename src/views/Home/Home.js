@@ -1,7 +1,4 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
  * @format
  * @flow strict-local
  */
@@ -11,45 +8,39 @@ import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
 
 import OverLay from '../../components/OverLay/OverLay';
 import UserDetails from '../../components/UserDetails/UserDetails';
-
-import {useFetchRandomUserAPI} from '../../services/Services';
+import {useFetchUserAPI} from '../../services/Services';
 import {styles} from './Home.style';
 
 const Home = (): Node => {
   const [userData, setUserData] = useState([]);
-  const [isVisible, setisVisible] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
-  const [pageCurrent, setpageCurrent] = useState(20);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pageCurrent, setPageCurrent] = useState(20);
   const [individualUserItem, setIndividualUserItem] = useState([]);
 
   // Remember the latest callback.
   useEffect(() => {
-    setisLoading(true);
-    callRandomAPI();
+    setIsLoading(true);
+    getUserProfiles();
   }, [pageCurrent]);
 
   // call random user API
-  async function callRandomAPI() {
-    let data = await useFetchRandomUserAPI(pageCurrent);
+  async function getUserProfiles() {
+    let data = await useFetchUserAPI(pageCurrent);
     // set user data
     setUserData(userData.concat(data));
-    setisLoading(false);
+    setIsLoading(false);
   }
 
   // show overlay
-  const renderOverlay = item => {
-    setisVisible(true);
+  const showPopup = item => {
+    setIsVisible(true);
     setIndividualUserItem(item);
-  };
-
-  // hide overlay
-  const hideOverlay = () => {
-    setisVisible(false);
   };
 
   // child render item
   const childListRenderItem = ({item, index}) => (
-    <UserDetails item={item} renderOverlay={() => renderOverlay(item)} />
+    <UserDetails item={item} showPopup={() => showPopup(item)} />
   );
 
   // child KeyExtractor
@@ -66,8 +57,8 @@ const Home = (): Node => {
 
   // handle pagination
   const handleLoadMore = () => {
-    setpageCurrent(pageCurrent + 20);
-    setisLoading(true);
+    setPageCurrent(pageCurrent + 20);
+    setIsLoading(true);
   };
 
   return (
@@ -86,7 +77,7 @@ const Home = (): Node => {
         {isVisible ? (
           <OverLay
             individualUserItem={individualUserItem}
-            onHandle={() => hideOverlay()}
+            onHandle={() => setIsVisible(false)}
           />
         ) : null}
       </SafeAreaView>

@@ -8,8 +8,10 @@
 import type {Node} from 'react';
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
+
 import OverLay from '../../components/OverLay/OverLay';
 import UserDetails from '../../components/UserDetails/UserDetails';
+
 import {useFetchRandomUserAPI} from '../../services/Services';
 import {styles} from './Home.style';
 
@@ -17,7 +19,8 @@ const Home = (): Node => {
   const [userData, setUserData] = useState([]);
   const [isVisible, setisVisible] = useState(false);
   const [isLoading, setisLoading] = useState(false);
-  const [pageCurrent, setpageCurrent] = useState(10);
+  const [pageCurrent, setpageCurrent] = useState(20);
+  const [individualUserItem, setIndividualUserItem] = useState([]);
 
   // Remember the latest callback.
   useEffect(() => {
@@ -34,8 +37,9 @@ const Home = (): Node => {
   }
 
   // show overlay
-  const renderOverlay = index => {
+  const renderOverlay = item => {
     setisVisible(true);
+    setIndividualUserItem(item);
   };
 
   // hide overlay
@@ -45,7 +49,7 @@ const Home = (): Node => {
 
   // child render item
   const childListRenderItem = ({item, index}) => (
-    <UserDetails item={item} renderOverlay={() => renderOverlay(index)} />
+    <UserDetails item={item} renderOverlay={() => renderOverlay(item)} />
   );
 
   // child KeyExtractor
@@ -68,7 +72,6 @@ const Home = (): Node => {
 
   return (
     <View style={styles.container}>
-      {isVisible ? <OverLay onHandle={() => hideOverlay()} /> : null}
       <SafeAreaView>
         <View style={styles.flatListView}>
           <FlatList
@@ -80,6 +83,12 @@ const Home = (): Node => {
             onEndReachedThreshold={0}
           />
         </View>
+        {isVisible ? (
+          <OverLay
+            individualUserItem={individualUserItem}
+            onHandle={() => hideOverlay()}
+          />
+        ) : null}
       </SafeAreaView>
     </View>
   );

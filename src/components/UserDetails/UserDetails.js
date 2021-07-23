@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 
-import {styles} from './UserDetails.style';
+import {UserDetailsStyles} from './UserDetails.style';
+import {ThemeContext} from '../../provider/ThemeProvider';
 
 type UserDetailsProp = {
   item: Object,
@@ -10,6 +11,9 @@ type UserDetailsProp = {
 
 // flatlist render item
 const UserDetails = (props: UserDetailsProp) => {
+  const {colourPalette} = useContext(ThemeContext);
+  const styles = UserDetailsStyles(colourPalette);
+
   let item = props.item ? props.item : null;
   let iconUrl =
     item && item.picture && item.picture.thumbnail

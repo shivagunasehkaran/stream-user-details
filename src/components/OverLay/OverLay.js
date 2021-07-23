@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   ImageBackground,
   Text,
@@ -6,7 +6,9 @@ import {
   View,
 } from 'react-native';
 
-import {styles} from './OverLay.style';
+import {PopupStyles} from './OverLay.style';
+import {ThemeContext} from '../../provider/ThemeProvider';
+
 import * as Images from '../../assets/styles/Images';
 import {formatDateToDisplayDate} from '../../utills/utills';
 
@@ -18,6 +20,9 @@ type OverlayProp = {
 };
 
 const OverLay = (props: OverlayProp) => {
+  const {colourPalette} = useContext(ThemeContext);
+  const styles = PopupStyles(colourPalette);
+
   const {email, gender} = props.individualUserItem
     ? props.individualUserItem
     : null;

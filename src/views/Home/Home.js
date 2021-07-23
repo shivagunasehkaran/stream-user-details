@@ -2,14 +2,16 @@
  * @format
  * @flow strict-local
  */
-import type {Node} from 'react';
-import React, {useEffect, useState} from 'react';
+import React, {Node, useEffect, useState, useContext} from 'react';
 import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
 
 import OverLay from '../../components/OverLay/OverLay';
 import UserDetails from '../../components/UserDetails/UserDetails';
 import {useFetchUserAPI} from '../../services/Services';
-import {styles} from './Home.style';
+
+import {HomeStyles} from './Home.style';
+import {ThemeContext} from '../../provider/ThemeProvider';
+import {ColourPalette} from '../../assets/styles/ColourPalette';
 
 const Home = (): Node => {
   const [userData, setUserData] = useState([]);
@@ -17,6 +19,8 @@ const Home = (): Node => {
   const [isLoading, setIsLoading] = useState(false);
   const [pageCurrent, setPageCurrent] = useState(20);
   const [individualUserItem, setIndividualUserItem] = useState([]);
+  const {colourPalette} = useContext(ThemeContext);
+  const styles = HomeStyles(colourPalette);
 
   // Remember the latest callback.
   useEffect(() => {
@@ -56,7 +60,7 @@ const Home = (): Node => {
   const childRenderFooter = () => {
     return isLoading ? (
       <View style={styles.loader}>
-        <ActivityIndicator size={'large'} />
+        <ActivityIndicator size={'large'} color={ColourPalette.darkGrey} />
       </View>
     ) : null;
   };

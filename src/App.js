@@ -9,9 +9,14 @@ import React from 'react';
 import type {Node} from 'react';
 
 import Home from '../src/views/Home';
+import ThemeProvider from '../src/provider/ThemeProvider';
 
 const App = (): Node => {
-  return <Home />;
+  return (
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
+  );
 };
 
 export default App;

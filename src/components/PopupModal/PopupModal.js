@@ -1,5 +1,5 @@
 // react library imports
-import React, {useContext} from 'react';
+import React, {useContext, memo} from 'react';
 import {
   ImageBackground,
   Text,
@@ -65,4 +65,4 @@ const PopupModal = (props: PopupModalProp) => {
   );
 };
 
-export default PopupModal;
+export default memo(PopupModal);

@@ -1,4 +1,4 @@
-import {useFetchRandomUserAPI} from '../../src/services/Services';
+import {useFetchUserAPI} from '../../src/services/Services';
 
 describe('Random user API tests', () => {
   const random_user_url = 'https://randomuser.me/api?results=1';
@@ -11,7 +11,7 @@ describe('Random user API tests', () => {
       }),
     );
 
-    const response = await useFetchRandomUserAPI(1);
+    const response = await useFetchUserAPI(1);
     expect(response.random_user_url).toEqual(random_user_url);
   });
 });

@@ -1,4 +1,4 @@
-# Stream User details : Sample application for Test assignment 
+# Stream User details : Sample application
 
 This Stream User details app allows you to see lot of users list with Avatar, Name and Phone. If you long press on the particular list item, 
 then you will be able to see the Popup modal with blurry background. In that Popup modal you will be able to see Email, City, Date of Birth and Gender for the individual user.
